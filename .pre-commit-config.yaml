@@ -19,17 +19,19 @@ repos:
     - id: flake8
 
 - repo: https://github.com/pycqa/isort
-  rev: 5.8.0
+  rev: 5.9.3
   hooks:
     - id: isort
       args: ["--profile", "black", "--atomic"]
 
-- repo: github.com/markdownlint/markdownlint
-  rev: master
-  hooks:
-    - id: markdownlint
+# I wasn't able to fix MD029 on my files, so commented out.
+# The configuration is fine
+# - repo: https://github.com/markdownlint/markdownlint
+#   rev: v0.11.0
+#   hooks:
+#     - id: markdownlint
 
-- repo: github.com/Lucas-C/pre-commit-hooks-nodejs
-  rev: master
+- repo: https://github.com/Lucas-C/pre-commit-hooks-nodejs
+  rev: v1.1.1
   hooks:
     - id: dockerfile_lint

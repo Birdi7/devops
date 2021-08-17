@@ -14,15 +14,17 @@ See [requirements.txt](requirements.txt).
 ### Quick start
 
 1. Clone
-`git clone git@github.com:Birdi7/devops.git`
-2. Create virtualenv. It's better if alias `python3` is set to `python3.7`, as I use it for the docker image
-`python3 -m virtualenv .venv`
+  `git clone git@github.com:Birdi7/devops.git`
+2. Create virtualenv.
+    It's better if alias `python3` is set to `python3.7`,
+    as I use it for the docker image
+    `python3 -m virtualenv .venv`
 3. Activate virtual env
-`. .venv/bin/activate`
+    `. .venv/bin/activate`
 4. Install packages
-`pip install -r requirements.txt`
+   `pip install -r requirements.txt`
 5. Run app
-`cd app_python && flask run`
+    `cd app_python && flask run`
 
 ## Docker
 
