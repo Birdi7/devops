@@ -1,5 +1,9 @@
 FROM python:3.7
 
+LABEL name "devops-1"
+LABEL version "1"
+
+
 WORKDIR /app
 ENV TZ 'Europe/Moscow'
 
@@ -8,5 +12,7 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-WORKDIR /app/app_python
+EXPOSE 5000
+
 ENTRYPOINT [ "bash", "/app/etc/entrypoint.sh" ]
+CMD ["flask", "RUN"]

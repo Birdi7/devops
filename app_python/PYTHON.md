@@ -1,5 +1,8 @@
 # Best practices
 
+I've chosen the Flask web framework as it's the most known
+microframework in the Pythonic world for small web applications.
+
 1. Usage of linters on pre-commit hooks
     * black
     * isort
