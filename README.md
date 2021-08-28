@@ -1,4 +1,4 @@
-# Devops lab 1
+# Devops
 
 This is my submission for the first lab of the DevOps course.
 
@@ -32,3 +32,16 @@ See [requirements.txt](requirements.txt).
 2. See `localhost:5000`
 
 Build with `docker build -t=birdi7/devops-1 .`
+
+
+## Unit Tests
+
+1. Activate your virtual environment
+2. Install development packages with
+`pip install -r requirements-dev.txt`
+3. Change current working directory with `cd app_python/`
+4. Run `pytest`
+
+## CI / CD
+
+### Github Actions
