@@ -38,8 +38,8 @@ jobs:
       run: |
         black --check .
      - name: Run tests
-       run: |
-         cd app_python && pytest && cd ..
+      run: |
+        cd app_python && pytest && cd ..
     # - name: Generate html
     #   run: |
     #     coverage html
