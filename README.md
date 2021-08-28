@@ -50,3 +50,12 @@ Build with `docker build -t=birdi7/devops-1 .`
 ### Github Actions
 
 The are a workflow file [main.yaml](.github/workflows/main.yml)
+
+There are 2 jobs:
+1. `lint_and_test`. It runs linters over the project, and executes unit-tests
+2. `build` — builds docker image and push to the docker hub
+with tag `birdi7/devops:latest`
+
+There are 2 caches:
+1. Docker layering cache. As specified [here](https://docs.docker.com/language/python/configure-ci-cd/)
+2. Pip dependencies cache, as specified [here](https://docs.github.com/en/actions/guides/caching-dependencies-to-speed-up-workflows)
