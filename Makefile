@@ -2,7 +2,7 @@
 
 base_python := python3
 python := $(py) python
-project_source_dir := src
+project_source_dir := app_python
 
 reports_dir := reports
 
@@ -52,3 +52,7 @@ flake8-report:
 
 .PHONY: lint
 lint: isort black flake8 mypy
+
+
+test:
+	pytest
