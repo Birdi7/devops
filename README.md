@@ -1,5 +1,8 @@
 # Devops
 
+![master](https://github.com/github/docs/actions/workflows/main.yml/badge.svg?branch=master)
+
+
 This is my submission for the first lab of the DevOps course.
 
 ## Python app
