@@ -37,7 +37,7 @@ jobs:
     - name: Lint with black
       run: |
         black --check .
-     - name: Run tests
+    - name: Run tests
       run: |
         cd app_python && pytest && cd ..
     # - name: Generate html
