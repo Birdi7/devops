@@ -48,3 +48,5 @@ Build with `docker build -t=birdi7/devops-1 .`
 ## CI / CD
 
 ### Github Actions
+
+The are a workflow file [main.yaml](.github/workflows/main.yml)
