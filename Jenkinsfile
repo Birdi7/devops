@@ -28,8 +28,9 @@ pipeline {
         }
 
         stage('Unit tests') {
-            sh 'make test'
-
+            steps {
+                sh 'make test'
+            }
         }
 
         // stage('Build docker image') {
