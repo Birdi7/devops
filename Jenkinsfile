@@ -40,6 +40,12 @@ pipeline {
             }
         }
 
+        stage('install docker') {
+            steps {
+                sh 'curl -fsSL https://get.docker.com -o get-docker.sh'
+                sh 'get-docker.sh'
+            }
+        }
         stage('Build docker image') {
             steps{
                 dir(path: workdir) {
