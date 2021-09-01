@@ -15,15 +15,15 @@ pipeline {
         stage('Install Python dependencies') {
             steps {
                 sh 'pip install -r app_python/requirements.txt'
-                sh 'pip install -r app_python/requirements-dev.txt'
+                // sh 'pip install -r app_python/requirements-dev.txt'
             }
         }
 
         stage('Linting and formatting') {
             steps {
                 sh 'flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics'
-                sh 'flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics'
-                sh 'black --check .'
+                // sh 'flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics'
+                // sh 'black --check .'
             }
         }
 
