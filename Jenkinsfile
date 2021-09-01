@@ -29,6 +29,7 @@ pipeline {
 
         stage('Unit tests') {
             sh 'make test'
+
         }
 
         // stage('Build docker image') {
