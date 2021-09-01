@@ -5,6 +5,13 @@ pipeline {
             args ' -v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
+    environment {
+        registry = 'birdi7/devops:jnks'
+        registryCredential = 'dockerhubCredentials'
+        dockerImage = ''
+        workdir = 'app'
+    }
+
     stages {
         stage('checkout') {
             steps {
@@ -33,23 +40,24 @@ pipeline {
             }
         }
 
-        // stage('Build docker image') {
-        //     steps{
-        //     script {
-        //         dockerImage = docker.build registry + ":jenkins-$BUILD_NUMBER"
-        //     }
-        //     }
-        //     }
-        // }
+        stage('Build docker image') {
+            steps{
+                dir(path: workdir) {
+                    script {
+                        dockerImage = docker.build registry + ":jenkins-$BUILD_NUMBER"
+                    }
+                }
+            }
+        }
 
-        // stage('Deploy docker image') {
-        // steps{
-        //     script {
-        //     docker.withRegistry('', registryCredential) {
-        //         dockerImage.push()
-        //     }
-        //     }
-        // }
-        // }
+        stage('Deploy docker image') {
+            steps{
+                script {
+                    docker.withRegistry('', registryCredential) {
+                        dockerImage.push()
+                    }
+                }
+            }
+        }
     }
 }
