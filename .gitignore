@@ -9,6 +9,9 @@ __pycache__/
 # should be commited or not?
 **.terraform/**
 
+.terraform/
+
+
 **.idea
 
 # C extensions
