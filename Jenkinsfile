@@ -42,7 +42,8 @@ pipeline {
 
         stage('install docker') {
             steps {
-                sh 'curl -fsSL https://get.docker.com -o get-docker.sh | sh'
+                sh 'apt-get update; apt-get install curl -y'
+                sh 'curl -fsSL https://get.docker.com | sh'
             }
         }
         // stage('Build docker image') {
