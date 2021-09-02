@@ -4,9 +4,9 @@
 # thanks to https://medium.com/@JohnFoderaro/how-to-set-up-a-local-linux-environment-with-vagrant-163f0ba4da77
 
 # Box / OS
-VAGRANT_BOX = 'ubuntu/trusty64'
+VAGRANT_BOX = 'ubuntu/bionic64'
 # Memorable name for your
-VM_NAME = 'somevm'
+VM_NAME = 'devopsvm'
 # VM User — 'vagrant' by default
 VM_USER = 'vagrant'
 # Username on your Mac
@@ -38,8 +38,13 @@ Vagrant.configure(2) do |config|
   config.vm.synced_folder HOST_PATH, GUEST_PATH
   # Disable default Vagrant folder, use a unique path per project
   config.vm.synced_folder '.', '/home/'+VM_USER+'', disabled: true
-  # Install vim
+
+  config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/me.pub"
+
+  # Install vim and ssh public key
   config.vm.provision "shell", inline: <<-SHELL
+    cat /home/vagrant/.ssh/me.pub >> /home/vagrant/.ssh/authorized_keys
     apt-get install vim
   SHELL
+
 end
