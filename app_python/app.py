@@ -1,6 +1,6 @@
 from flask import Flask
 
-from app_python.get_content import get_content
+from .utils.get_content import get_content
 
 app = Flask(__name__)
 

@@ -1,0 +1,40 @@
+---
+
+- name: Install pip3
+  apt:
+    name: " {{ item }} "
+    state: present
+    update_cache: yes
+  loop:
+    - python3-pip
+
+- name: Install package of compose for python
+  pip:
+    name: " {{ item }} "
+    executable: pip3
+    state: latest
+  loop:
+    - pip
+    - docker-compose
+    - docker
+    - compose
+
+- name: Create app folder
+  file:
+    path: /opt/app_python
+    state: directory
+
+- name: Copy compose file to VM
+  copy:
+    src: ../../../app_python/docker-compose.yaml
+    dest: /opt/app_python/docker-compose.yaml
+    mode: '755'
+
+- name: Restart compose components
+  community.docker.docker_compose:
+    project_src: /opt/app_python
+    project_name: app_python
+    state: present
+    build: no
+    pull: yes
+    restarted: yes

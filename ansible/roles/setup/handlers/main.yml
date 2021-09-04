@@ -7,8 +7,3 @@
     name: docker
     state: started
     enabled: yes
-
-- name: Restart docker
-  service:
-    name: docker
-    state: restarted

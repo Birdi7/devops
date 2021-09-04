@@ -1,0 +1,6 @@
+---
+
+
+# Deploy my app
+- name: Import Python app tasks
+  include_tasks: app_python.yml

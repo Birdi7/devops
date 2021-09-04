@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  devops:
+    build: .
+    image: birdi7/devops
+    ports:
+      - "5000:5000"

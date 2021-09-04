@@ -15,4 +15,5 @@ COPY . .
 EXPOSE 5000
 
 ENTRYPOINT [ "bash", "/app/etc/entrypoint.sh" ]
-CMD ["flask", "RUN"]
+
+CMD ["flask", "run"]

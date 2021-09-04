@@ -3,7 +3,8 @@
 
 - name: Configurations to "remote" host
   hosts: remote
-  remote_user: ubuntu # Remote user
+  remote_user: vagrant # Remote user
   become: yes
   roles:
-      - setup
+    - setup
+    - deploy
