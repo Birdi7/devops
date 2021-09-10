@@ -13,4 +13,4 @@ scrape_configs:
     labels:
       # my app's logs are in /tmp folder
       job: tmplogs
-      __path__: /tmp/*log
+      __path__: /tmp/app_python.log

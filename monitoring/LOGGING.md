@@ -14,7 +14,7 @@ idk if host is actually involved here, but I have the file on the host file syst
 
 There is an interesting point of doing this lab
 on MacOS in particular. The docker actually runs
-in the special vm created by `docker desktop`, and docker mounts only a specified folders to the mentioned
+in the special, vm created by `docker desktop`, and docker mounts only a specified folders to the mentioned
 VM.
 ![](images/3.png)
 
@@ -29,3 +29,16 @@ for this on python
 4. Use one format consistently, so that it's easy to parse them
 5. Use `alert management system`. For instance, if `healthcheck` failed
 6. Use [sentry](sentry.io) for errors, as it's easier to analyze the software outcome than the raw logs
+
+# Metrics
+
+Very useful — https://docs.docker.com/config/daemon/prometheus/
+
+![](images/4.png)
+![](images/5.png)
+![](images/6.png)
+![](images/7.png)
+![](images/8.png)
+![](images/9.png)
+![](images/10.png)
+![](images/11.png)
