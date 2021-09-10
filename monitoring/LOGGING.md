@@ -42,3 +42,4 @@ Very useful — https://docs.docker.com/config/daemon/prometheus/
 ![](images/9.jpg)
 ![](images/10.jpg)
 ![](images/11.jpg)
+![](images/12.png)

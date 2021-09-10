@@ -11,6 +11,11 @@ services:
     command: -config.file=/etc/loki/local-config.yaml
     networks:
       - loki
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: 50M
 
   promtail:
     image: grafana/promtail:2.3.0
@@ -22,6 +27,11 @@ services:
     command: -config.file=/etc/promtail/promtail.yml
     networks:
       - loki
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: 50M
 
   grafana:
     image: grafana/grafana:latest
@@ -29,6 +39,11 @@ services:
       - "3000:3000"
     networks:
       - loki
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: 50M
 
   prometheus:
     image: prom/prometheus
@@ -39,3 +54,9 @@ services:
 
     networks:
       - loki
+
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: 50M
