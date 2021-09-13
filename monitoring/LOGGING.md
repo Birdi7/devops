@@ -7,7 +7,6 @@
 App's whole logging system is configured to put logs into `/tmp/app_python.log` file,
 then here is the path
 `app container -> VM -> host system -> VM -> promtail container`
-idk if host is actually involved here, but I have the file on the host file system
 
 
 ## Found bugs
@@ -18,6 +17,7 @@ in the special, vm created by `docker desktop`, and docker mounts only a specifi
 VM.
 ![](images/3.png)
 
+https://stackoverflow.com/a/48183300/6446389
 Also, it doesn't work with `/var/log` dir — because of some `PermissionError` exception
 
 
@@ -33,6 +33,8 @@ for this on python
 # Metrics
 
 Very useful — https://docs.docker.com/config/daemon/prometheus/
+https://docs.docker.com/compose/compose-file/compose-file-v2/#extension-fields
+
 
 ![](images/4.png)
 ![](images/5.png)
@@ -43,3 +45,17 @@ Very useful — https://docs.docker.com/config/daemon/prometheus/
 ![](images/10.jpg)
 ![](images/11.jpg)
 ![](images/12.png)
+
+
+Also, while logging is configured for all
+services I have in this lab with
+docker's `logging` option, it was hard
+for me to test it on MacOS. See (Found bugs)[#Found bugs]
+section.
+But, I've checked them inside the `docker desktop's`
+VM with help of [this](https://gist.github.com/BretFisher/5e1a0c7bcca4c735e716abf62afad389)
+`docker run -it --rm --privileged --pid=host justincormack/nsenter1`
+
+
+![](images/13.jpg)
+![](images/14.png)

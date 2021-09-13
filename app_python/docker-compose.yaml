@@ -13,10 +13,10 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.1'
-          memory: 50M
+          cpus: '0.2'
+          memory: 250M
 
-#    doesn't work on macos, so I used volume with log file
+#    hard to make working on macos, so I used volume with log file
 #    logging:
 #      driver: "json-file"
 #      options:

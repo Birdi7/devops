@@ -1,4 +1,24 @@
-version: "3"
+version: "2.4"
+
+x-logging:
+  &default-logging
+  options:
+    max-size: '12m'
+    max-file: '5'
+    tag: "{{.ImageName}}|{{.Name}}"
+  driver: json-file
+
+x-resources:
+  &default-resource-limits
+  cpus: 0.5
+  mem_limit: 200M
+
+x-common:
+  &common-params
+  logging: *default-logging
+  networks:
+    - loki
+  <<: *default-resource-limits
 
 networks:
   loki:
@@ -9,13 +29,8 @@ services:
     ports:
       - "3100:3100"
     command: -config.file=/etc/loki/local-config.yaml
-    networks:
-      - loki
-    deploy:
-      resources:
-        limits:
-          cpus: '0.1'
-          memory: 50M
+    <<: *common-params
+
 
   promtail:
     image: grafana/promtail:2.3.0
@@ -25,25 +40,15 @@ services:
     ports:
       - "9080:9080"
     command: -config.file=/etc/promtail/promtail.yml
-    networks:
-      - loki
-    deploy:
-      resources:
-        limits:
-          cpus: '0.1'
-          memory: 50M
+    <<: *common-params
 
   grafana:
     image: grafana/grafana:latest
     ports:
       - "3000:3000"
-    networks:
-      - loki
-    deploy:
-      resources:
-        limits:
-          cpus: '0.1'
-          memory: 50M
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    <<: *common-params
 
   prometheus:
     image: prom/prometheus
@@ -52,11 +57,8 @@ services:
     volumes:
       - ${PWD}/prometheus.yml:/etc/prometheus/prometheus.yml
 
-    networks:
-      - loki
+    <<: *common-params
 
-    deploy:
-      resources:
-        limits:
-          cpus: '0.1'
-          memory: 50M
+
+volumes:
+  grafana-storage:
