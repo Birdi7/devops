@@ -14,3 +14,9 @@ minicube
 ![](images/5.png)
 ![](images/6.png)
 ![](images/7.png)
+
+## Lab 10 screenshots
+
+![](images/8.png)
+![](images/9.png)
+![](images/10.png)
