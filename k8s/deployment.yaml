@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: devops
+  minReadySeconds: 5
+  template:
+    metadata:
+      labels:
+        app: devops
+    spec:
+      containers:
+      - name: devops
+        image: birdi7/devops1:latest
+        ports:
+        - containerPort: 5000
