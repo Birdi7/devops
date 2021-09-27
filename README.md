@@ -10,6 +10,11 @@ This is my submission for the first lab of the DevOps course.
 Small flask web app, which shows current Moscow time on the webpage.
 Uses [black](https://github.com/psf/black) and [isort](https://github.com/timothycrosley/isort) with [seed-isort-config](https://github.com/asottile/seed-isort-config) for code-formatting, and [flake8](http://flake8.pycqa.org/en/latest/) with [pylint](https://www.pylint.org) for linting. [Pre-commit](https://pre-commit.com) hooks are installed for every tool, except for the pylint.
 
+### endpoint
+— `localhost:5000/` - shows current time in moscow. writes visits into `/opt/data/visits.json`
+— `localhost:5000/visits/` — shows content of `/opt/data/visits.json`
+
+
 ### Requirements
 
 See [requirements.txt](requirements.txt).
