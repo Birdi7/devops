@@ -1,10 +1,12 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ include "app-python.fullname" . }}
   labels:
     {{- include "app-python.labels" . | nindent 4 }}
 spec:
+  serviceName: {{ include "app-python.fullname" . }}
+  podManagementPolicy: {{ .Values.statefulSet.podManagementPolicy }}
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
@@ -56,10 +58,6 @@ spec:
           volumeMounts:
             - name: configmap-volume
               mountPath: {{ .Values.image.workDir }}
-      volumes:
-        - name: configmap-volume
-          configMap:
-            name: {{ .Release.Name }}-configmap
 
       {{- with .Values.nodeSelector }}
       nodeSelector:
@@ -73,3 +71,8 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+  volumeClaimTemplates:
+      - metadata:
+          name: configmap-volume
+        spec:
+          {{- toYaml .Values.statefulSet.volumeClaimTemplates.spec | nindent 10 }}
